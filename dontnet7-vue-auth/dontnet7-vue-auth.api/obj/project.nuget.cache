@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "CM5TU1cWoART+SIUPRceAs+GB9KzCT5JUNGqD6AflXh7xd5hM9jJAY2WkuxcuQ6f6Yg/o+fre1K60gCBJr/CSQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Eben Burger\\Documents\\Private project- Play Abouts\\dotnet7Api-Vue\\dontnet7-vue-auth\\dontnet7-vue-auth.api\\dontnet7-vue-auth.api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Eben Burger\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.3\\microsoft.aspnetcore.openapi.7.0.3.nupkg.sha512",
+    "C:\\Users\\Eben Burger\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\Eben Burger\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\Eben Burger\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "C:\\Users\\Eben Burger\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "C:\\Users\\Eben Burger\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "C:\\Users\\Eben Burger\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
