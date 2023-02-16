@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Eben Burger\\Documents\\Private project- Play Abouts\\dotnet7Api-Vue\\dontnet7-vue-auth\\dontnet7-vue-auth.api\\dontnet7-vue-auth.api.csproj": {}
+    "C:\\Users\\Eben Burger\\Documents\\Private project- Play Abouts\\dotnet7-vue\\dontnet7-vue-auth\\dontnet7-vue-auth.api\\dontnet7-vue-auth.api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Eben Burger\\Documents\\Private project- Play Abouts\\dotnet7Api-Vue\\dontnet7-vue-auth\\dontnet7-vue-auth.api\\dontnet7-vue-auth.api.csproj": {
+    "C:\\Users\\Eben Burger\\Documents\\Private project- Play Abouts\\dotnet7-vue\\dontnet7-vue-auth\\dontnet7-vue-auth.api\\dontnet7-vue-auth.api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Eben Burger\\Documents\\Private project- Play Abouts\\dotnet7Api-Vue\\dontnet7-vue-auth\\dontnet7-vue-auth.api\\dontnet7-vue-auth.api.csproj",
+        "projectUniqueName": "C:\\Users\\Eben Burger\\Documents\\Private project- Play Abouts\\dotnet7-vue\\dontnet7-vue-auth\\dontnet7-vue-auth.api\\dontnet7-vue-auth.api.csproj",
         "projectName": "dontnet7-vue-auth.api",
-        "projectPath": "C:\\Users\\Eben Burger\\Documents\\Private project- Play Abouts\\dotnet7Api-Vue\\dontnet7-vue-auth\\dontnet7-vue-auth.api\\dontnet7-vue-auth.api.csproj",
+        "projectPath": "C:\\Users\\Eben Burger\\Documents\\Private project- Play Abouts\\dotnet7-vue\\dontnet7-vue-auth\\dontnet7-vue-auth.api\\dontnet7-vue-auth.api.csproj",
         "packagesPath": "C:\\Users\\Eben Burger\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Eben Burger\\Documents\\Private project- Play Abouts\\dotnet7Api-Vue\\dontnet7-vue-auth\\dontnet7-vue-auth.api\\obj\\",
+        "outputPath": "C:\\Users\\Eben Burger\\Documents\\Private project- Play Abouts\\dotnet7-vue\\dontnet7-vue-auth\\dontnet7-vue-auth.api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Eben Burger\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -41,6 +41,20 @@
           "targetAlias": "net7.0",
           "dependencies": {
             "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[7.0.3, )"
             },
