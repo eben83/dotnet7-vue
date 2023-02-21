@@ -32,20 +32,23 @@ public class RegisterService : IRegisterService
         return await _dataContext.Users.ToListAsync();
     }
 
-    public Task<ActionResult<string>> Login(UserDto userDto)
+    public async Task<ActionResult<string>> Login(UserDto userDto)
     {
-        if (_user.UserName != userDto.UserName)
+        //TODO- how to find the user name in the db once the user registers
+        var firstOrDefault = _user.UserName;
+
+        if (firstOrDefault != userDto.UserName)
         {
-            return Task.FromResult<ActionResult<string>>(string.Empty);
+            return string.Empty;
         }
         
         if (VerifyPasswordHash(userDto.Password, _user.PasswordHash, _user.PasswordSalt))
         {
             var token = CreateToken(_user);
-            return Task.FromResult<ActionResult<string>>(token);
+            return token;
         }
 
-        return Task.FromResult<ActionResult<string>>(string.Empty);
+        return string.Empty;
     }
     
     private static void CreatePassWordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
@@ -81,9 +84,10 @@ public class RegisterService : IRegisterService
         
         var keySting = _configuration.GetSection("AppSettings:Token").Value;
 
+        //TODO- find out why I can access the above appSetting token string value
         // var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value));
-        // var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("my top secret key")
-        var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(keySting)
+        var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("my top secret key")
+        // var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(keySting)
             // _configuration.GetSection("AppSettings:Token").Value)
         );
         

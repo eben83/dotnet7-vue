@@ -12,11 +12,10 @@ public class DataContext : DbContext
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        // var keySting = _configuration.GetSection("AppSettings:ConnectionString");
+        //ToDo- find why last statement not working
         base.OnConfiguring(optionsBuilder);
         optionsBuilder.UseSqlServer("Server=.\\localhost; Database=superPeopleDb;Trusted_Connection=true;TrustServerCertificate=true");
-        // optionsBuilder.UseSqlServer("Server=.\\localhost; Database=superPeopleDb;Trusted_Connection=true;TrustServerCertificate=true");
-        // optionsBuilder.UseSqlServer(keySting.ToString());
+        // optionsBuilder.UseSqlServer(_configuration.GetSection("ConnectionString: LocalServer").Value);
     }
     
     public DbSet<User> Users { get; set; }
