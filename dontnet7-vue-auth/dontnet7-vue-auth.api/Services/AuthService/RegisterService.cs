@@ -85,11 +85,11 @@ public class RegisterService : IRegisterService
         var keySting = _configuration.GetSection("AppSettings:Token").Value;
 
         //TODO- find out why I can access the above appSetting token string value
-        // var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value));
-        var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("my top secret key")
+        var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value));
+        //var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("my top secret key")
         // var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(keySting)
             // _configuration.GetSection("AppSettings:Token").Value)
-        );
+        //);
         
         var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
