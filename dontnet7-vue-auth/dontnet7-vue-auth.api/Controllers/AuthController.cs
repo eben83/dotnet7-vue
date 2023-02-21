@@ -9,6 +9,7 @@ namespace dontnet7_vue_auth.api.Controllers;
 public class AuthController : ControllerBase
 {
     private readonly IRegisterService _registerService;
+    
 
     public AuthController(IRegisterService registerService)
     {
@@ -20,6 +21,18 @@ public class AuthController : ControllerBase
     {
         var data = await _registerService.Register(userDto);
 
+        return Ok(data);
+    }
+
+    [HttpPost("login")]
+    public async Task<ActionResult<string>> Login(UserDto userDto)
+    {
+        var data = await _registerService.Login(userDto);
+
+        if (data.Value == "")
+        {
+            return Unauthorized("Login Failed");
+        }
         return Ok(data);
     }
 

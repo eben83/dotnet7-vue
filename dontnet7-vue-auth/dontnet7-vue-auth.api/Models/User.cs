@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace dontnet7_vue_auth.api.Models;
 
 public class User
