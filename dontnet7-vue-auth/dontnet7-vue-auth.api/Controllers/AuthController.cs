@@ -21,15 +21,21 @@ public class AuthController : ControllerBase
     {
         var data = await _registerService.Register(userDto);
 
+        if (data is null)
+        {
+            return BadRequest("User Name already exists");
+        }
+
         return Ok(data);
     }
 
     [HttpPost("login")]
     public async Task<ActionResult<string>> Login(UserDto userDto)
     {
+        
         var data = await _registerService.Login(userDto);
 
-        if (data.Value == "")
+        if (data == null)
         {
             return Unauthorized("Login Failed");
         }

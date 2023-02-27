@@ -21,6 +21,13 @@ public class RegisterService : IRegisterService
 
     public async Task<ActionResult<List<User>>> Register(UserDto userDto)
     {
+        var user = _dataContext.Users.FirstOrDefault(x => x.UserName == userDto.UserName);
+
+        if (user != null)
+        {
+            return null;
+        }
+
         CreatePassWordHash(userDto.Password, out byte[] passwordHash, out byte[] passwordSalt);
 
         _user.UserName = userDto.UserName;
@@ -34,21 +41,19 @@ public class RegisterService : IRegisterService
 
     public async Task<ActionResult<string>> Login(UserDto userDto)
     {
-        //TODO- how to find the user name in the db once the user registers
-        var firstOrDefault = _user.UserName;
+        var token = "";
+        var user = _dataContext.Users.FirstOrDefault(x => x.UserName == userDto.UserName);
 
-        if (firstOrDefault != userDto.UserName)
+        if (user == null)
         {
-            return string.Empty;
-        }
-        
-        if (VerifyPasswordHash(userDto.Password, _user.PasswordHash, _user.PasswordSalt))
-        {
-            var token = CreateToken(_user);
-            return token;
+            return null;
         }
 
-        return string.Empty;
+        if (VerifyPasswordHash(userDto.Password, user.PasswordHash, user.PasswordSalt))
+        {
+            token = CreateToken(user);
+        }
+        return token;
     }
     
     private static void CreatePassWordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
@@ -79,17 +84,16 @@ public class RegisterService : IRegisterService
     {
         List<Claim> claims = new List<Claim>
         {
-            new(ClaimTypes.Name, user.UserName)
+            new (ClaimTypes.Name, user.UserName)
         };
         
-        var keySting = _configuration.GetSection("AppSettings:Token").Value;
-
         //TODO- find out why I can access the above appSetting token string value
-        var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value));
-        //var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("my top secret key")
+        var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
+            _configuration.GetSection("AppSettings:Token").Value));
+        // var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(keySting));
         // var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(keySting)
             // _configuration.GetSection("AppSettings:Token").Value)
-        //);
+        // );
         
         var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
