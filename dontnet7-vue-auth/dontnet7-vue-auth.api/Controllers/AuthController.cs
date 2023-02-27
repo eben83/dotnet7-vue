@@ -1,6 +1,8 @@
 
 using dontnet7_vue_auth.api.Services.AuthService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace dontnet7_vue_auth.api.Controllers;
 
@@ -17,6 +19,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("register")]
+    [AllowAnonymous]
     public async Task<ActionResult<User>> Register(UserDto userDto)
     {
         var data = await _registerService.Register(userDto);
@@ -30,12 +33,12 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
+    [AllowAnonymous]
     public async Task<ActionResult<string>> Login(UserDto userDto)
     {
-        
         var data = await _registerService.Login(userDto);
 
-        if (data == null)
+        if (data == null || String.IsNullOrEmpty(data.Value))
         {
             return Unauthorized("Login Failed");
         }
