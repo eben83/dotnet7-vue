@@ -12,6 +12,7 @@ public class RegisterService : IRegisterService
     private readonly DataContext _dataContext;
     private static IConfiguration _configuration;
     private static User _user = new User();
+    
 
     public RegisterService(DataContext dataContext, IConfiguration configuration)
     {
@@ -87,13 +88,14 @@ public class RegisterService : IRegisterService
             new (ClaimTypes.Name, user.UserName)
         };
         
+        // var key = Base64UrlEncoder.DecodeBytes("This is my super secret key");
+        
         //TODO- find out why I can access the above appSetting token string value
         var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
             _configuration.GetSection("AppSettings:Token").Value));
-        // var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(keySting));
-        // var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(keySting)
-            // _configuration.GetSection("AppSettings:Token").Value)
-        // );
+        
+        // var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("This is my super secret key"));
+        
         
         var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
